@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./App.css";
 import { fetchSmurfs } from "../store/actions/smurfActions"
 import SmurfList from "./SmurfList";
+import SmurfForm from "./SmurfForm";
 import { connect } from "react-redux";
 
 const App = props => {
@@ -18,6 +19,7 @@ const App = props => {
         <h1>Smurf Village</h1>
         {!loadingSmurfs ? <SmurfList /> : <div>...Fetching Smurfs</div>}
         {errorMessage !== "" ? <div>{errorMessage}</div> : null}
+        <SmurfForm />
       </div>
     );
 }

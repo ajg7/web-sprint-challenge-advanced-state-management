@@ -2,13 +2,18 @@
 import { 
     FETCH_SMURFS,
     FETCH_SMURFS_ERROR,
-    FETCH_SMURFS_SUCCESS
+    FETCH_SMURFS_SUCCESS,
+
+    ADD_SMURFS,
+    ADD_SMURFS_ERROR,
+    ADD_SMURFS_SUCCESS
 } from "../actions"
 
 const initialState = {
     smurfs: [],
     loadingSmurfs: true,
-    errorMessage: ""
+    errorMessage: "",
+    newSmurfs: {}
 }
 
 

@@ -3,6 +3,7 @@ import axios from "axios";
     export const FETCH_SMURFS = "FETCH_SMURFS";
     export const FETCH_SMURFS_SUCCESS ="FETCH_SMURFS_SUCCESS";
     export const FETCH_SMURFS_ERROR = "FETCH_SMURFS_ERROR";
+
     export const ADD_SMURFS = "ADD_SMURFS";
     export const ADD_SMURFS_SUCCESS = "ADD_SMURFS_SUCCESS";
     export const ADD_SMURFS_ERROR = "ADD_SMURFS_ERROR";
@@ -21,6 +22,15 @@ import axios from "axios";
     }
 
 
-    export const addSmurfs = () => {
-        
+    export const addSmurfs = newSmurf => {
+        return (dispatch) => {
+            dispatch({ type: ADD_SMURFS })
+            axios.post("http://localhost:3333/smurfs", newSmurf)
+                .then(response => {
+                    dispatch({ type: ADD_SMURFS_SUCCESS, payload: response})
+                })
+                .catch(error => {
+                    dispatch({ type: ADD_SMURFS_ERROR, payload: { message: "Did Wendy sell your Smurf for drugs? Probably not, but how do we know?"}})
+                })
+        }
     }
