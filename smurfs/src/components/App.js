@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import axios from "axios";
 import "./App.css";
 import { fetchSmurfs } from "../store/actions/smurfActions"
 import SmurfList from "./SmurfList";

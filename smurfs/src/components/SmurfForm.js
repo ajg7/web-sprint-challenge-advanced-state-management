@@ -6,45 +6,49 @@ import { fetchSmurfs } from "../store/actions/smurfActions";
 const SmurfForm = props => {
     useEffect(() => {
         props.fetchSmurfs()
-    }, [])
+    }, [props])
 
-    const [newSmurf, setNewSmurf] = useState({
-        name: "",
-        age: "",
-        height: ""
-    })
-
-    const handleChanges = event => {
-        console.log(event.target.value)
-    }
+    const [newSmurf, setNewSmurf] = useState(props.newSmurfs);
+    const [smurfName, setSmurfName] = useState("");
+    const [smurfAge, setSmurfAge] = useState("");
+    const [smurfHeight, setSmurfHeight] = useState("");
 
     const submit = event => {
-        event.preventDefault()
-        props.addSmurfs(newSmurf)
+        setNewSmurf({
+            name: smurfName,
+            age: smurfAge,
+            height: smurfHeight
+        })
+        console.log(newSmurf)
+    }
+
+    const onSubmit = event => {
+        event.preventDefault();
+        props.addSmurfs(newSmurf);
     }
 
     return(
         <div className="smurf-form">
-            <form onSubmit={submit}>
+            <form onSubmit={onSubmit}>
                 <input 
                     name="name"
                     type="text"
                     placeholder="Name Here"
-                    onChange={handleChanges}
+                    onChange={event => setSmurfName(event.target.value)}
                 />
                 <br />
                 <input 
                     name="age"
                     type="text"
                     placeholder="Age Here"
-                    onChange={handleChanges}
+                    onChange={event => setSmurfAge(event.target.value)}
                 />
                 <br />
                 <input 
                     name="height"
                     type="text"
                     placeholder="Height Here"
-                    onChange={handleChanges}
+                    onChange={event => setSmurfHeight(event.target.value)}
                 />
                 <br />
                 <button>Make New Smurf</button>
@@ -55,9 +59,7 @@ const SmurfForm = props => {
 
 function mapStateToProps(state) {
     return {
-        name: state.name,
-        age: state.age,
-        height: state.height
+        newSmurfs: state.newSmurfs
     }
 }
 

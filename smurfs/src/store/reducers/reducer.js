@@ -36,6 +36,23 @@ export default (state = initialState, action) => {
                 smurfs: action.payload,
                 loadingSmurfs: false
             }
+        case ADD_SMURFS:
+            return {
+                ...state,
+                loadingSmurfs: true,
+            }
+        case ADD_SMURFS_ERROR:
+            return {
+                ...state,
+                loadingSmurfs: false,
+                errorMessage: action.payload.message
+            }
+        case ADD_SMURFS_SUCCESS:
+            return {
+                ...state,
+                newSmurfs: action.payload,
+                loadingSmurfs: false
+            }
         default:
             return state
     }
