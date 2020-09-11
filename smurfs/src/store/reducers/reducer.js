@@ -12,10 +12,30 @@ const initialState = {
     name: "",
     age: null,
     height: "",
-    id: null
+    id: null,
+    loadingSmurfs: true,
+    errorMessage: ""
 }
 
 
 export const reducer = (state = initialState, action) => {
-
+    switch(action.type) {
+        case FETCH_SMURFS: 
+            return {
+                ...state,
+                loadingSmurfs: true
+            }
+        case FETCH_SMURFS_ERROR:
+            return {
+                ...state,
+                loadingSmurfs: false,
+                errorMessage: action.payload.message
+            }
+        case FETCH_SMURFS_SUCCESS:
+            return {
+                
+            }
+        default:
+            return state
+    }
 }
