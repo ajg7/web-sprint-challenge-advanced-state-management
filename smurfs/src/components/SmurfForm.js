@@ -17,8 +17,7 @@ const SmurfForm = props => {
         setNewSmurf({
             name: smurfName,
             age: smurfAge,
-            height: smurfHeight,
-            id: Math.round(Math.random() * 50)
+            height: smurfHeight
         })
     }
 
