@@ -27,7 +27,7 @@ import axios from "axios";
             dispatch({ type: ADD_SMURFS })
             axios.post("http://localhost:3333/smurfs", newSmurf)
                 .then(response => {
-                    dispatch({ type: ADD_SMURFS_SUCCESS, payload: response})
+                    dispatch({ type: ADD_SMURFS_SUCCESS, payload: response.data})
                 })
                 .catch(error => {
                     dispatch({ type: ADD_SMURFS_ERROR, payload: { message: "Did Wendy sell your Smurf for drugs? Probably not, but how do we know?"}})

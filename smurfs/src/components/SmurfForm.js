@@ -19,17 +19,15 @@ const SmurfForm = props => {
             age: smurfAge,
             height: smurfHeight
         })
-        console.log(newSmurf)
     }
 
-    const onSubmit = event => {
-        event.preventDefault();
+    const submitHandler = event => {
         props.addSmurfs(newSmurf);
     }
 
     return(
         <div className="smurf-form">
-            <form onSubmit={onSubmit}>
+            <form onSubmit={submitHandler}>
                 <input 
                     name="name"
                     type="text"
@@ -51,7 +49,7 @@ const SmurfForm = props => {
                     onChange={event => setSmurfHeight(event.target.value)}
                 />
                 <br />
-                <button>Make New Smurf</button>
+                <button onClick={submit}>Make New Smurf</button>
             </form>
         </div>
     )

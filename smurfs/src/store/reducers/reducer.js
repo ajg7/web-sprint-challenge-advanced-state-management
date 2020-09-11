@@ -12,8 +12,7 @@ import {
 const initialState = {
     smurfs: [],
     loadingSmurfs: true,
-    errorMessage: "",
-    newSmurfs: {}
+    errorMessage: ""
 }
 
 
@@ -50,7 +49,7 @@ export default (state = initialState, action) => {
         case ADD_SMURFS_SUCCESS:
             return {
                 ...state,
-                newSmurfs: action.payload,
+                smurfs: action.payload,
                 loadingSmurfs: false
             }
         default:
