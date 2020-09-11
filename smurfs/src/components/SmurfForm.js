@@ -17,7 +17,8 @@ const SmurfForm = props => {
         setNewSmurf({
             name: smurfName,
             age: smurfAge,
-            height: smurfHeight
+            height: smurfHeight,
+            id: Math.round(Math.random() * 50)
         })
     }
 
@@ -55,10 +56,6 @@ const SmurfForm = props => {
     )
 }
 
-function mapStateToProps(state) {
-    return {
-        newSmurfs: state.newSmurfs
-    }
-}
+function mapStateToProps(state) {}
 
 export default connect(mapStateToProps, {addSmurfs, fetchSmurfs})(SmurfForm)
